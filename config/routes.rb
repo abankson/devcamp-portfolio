@@ -15,4 +15,12 @@ Rails.application.routes.draw do
   #sets root to home. Basically changing your homepage to home
   root to: 'pages#home'
 
+  #Custom route for blogs/:id/toggle_status
+  resources :blogs do
+    member do
+      get :toggle_status
+    end
+  end
+
+
 end
