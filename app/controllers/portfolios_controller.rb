@@ -27,17 +27,17 @@ class PortfoliosController < ApplicationController
 
 
   def edit
-    @portfolioItem = Portfolio.find(params[:id])
+    @portfolioItem = Portfolio.friendly.find(params[:id])
   end
 
 
   def show
-    @portfolioItem = Portfolio.find(params[:id])
+    @portfolioItem = Portfolio.friendly.find(params[:id])
   end
 
 
   def update
-    @portfolioItem = Portfolio.find(params[:id])
+    @portfolioItem = Portfolio.friendly.find(params[:id])
 
     respond_to do |format|
       if @portfolioItem.update(params.require(:portfolio).permit(:title, :subtitle, :body))
@@ -51,7 +51,7 @@ class PortfoliosController < ApplicationController
 
   def destroy
     #The lookup
-    @portfolioItem = Portfolio.find(params[:id])
+    @portfolioItem = Portfolio.friendly.find(params[:id])
 
     #This will destroy the record
     @portfolioItem.destroy
