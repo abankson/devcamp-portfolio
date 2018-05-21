@@ -2,6 +2,9 @@ class Portfolio < ApplicationRecord
   has_many :technologies
 
   #So you can pull in technology attributes and reject if no technologies
+  #You can build with this kind of code with an array of technology items
+  # => Portfolio.create!(title: "Web App", subtitle: "asdasd", body: "asdjnkjng", technologies_attributes: [{name: "Ruby"}, 
+  #     {name: "Rails"}, {name: "Angular"}, {name: "Ionic"}])
   accepts_nested_attributes_for :technologies, 
                                 reject_if: lambda { |attrs| attrs['name'].blank? }
 

@@ -14,11 +14,13 @@ class PortfoliosController < ApplicationController
 
   def new
     @portfolioItem = Portfolio.new 
+    #Hardcoded 3 technologies will be built for the instantiated Portfolio
+    3.times { @portfolioItem.technologies.build }
   end
 
 
   def create
-    @portfolioItem = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body))
+    @portfolioItem = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body, technologies_attributes: [:name]))
 
     respond_to do |format|
       if @portfolioItem.save
