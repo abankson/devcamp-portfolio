@@ -1,4 +1,6 @@
 class Portfolio < ApplicationRecord
+  include Placeholder
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 
@@ -15,9 +17,9 @@ class Portfolio < ApplicationRecord
   after_initialize :set_defaults
 
   def set_defaults
-    # '||=' means 
-    self.mainImage ||= "http://via.placeholder.com/700x400"
-    self.thumbImage ||= "http://via.placeholder.com/350x200"
+    # '||=' is essentially an if nil then set to ... statement
+    self.mainImage ||= Placeholder.imageGenerator(height: '700', width: '400')
+    self.thumbImage ||= Placeholder.imageGenerator(height: '350', width: '200')
   end
 
 end
