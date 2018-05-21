@@ -7,14 +7,20 @@ class PortfoliosController < ApplicationController
     #In order to make use of @portfolio_items a file in views must be made for portfolios index 'index.html.erb'
   end
 
+  def angular
+    @portfolioItemsAngular = Portfolio.angular
+  end
+
 
   def new
     @portfolioItem = Portfolio.new 
+    #Hardcoded 3 technologies will be built for the instantiated Portfolio
+    3.times { @portfolioItem.technologies.build }
   end
 
 
   def create
-    @portfolioItem = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body))
+    @portfolioItem = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body, technologies_attributes: [:name]))
 
     respond_to do |format|
       if @portfolioItem.save
