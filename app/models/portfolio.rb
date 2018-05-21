@@ -1,6 +1,10 @@
 class Portfolio < ApplicationRecord
   has_many :technologies
 
+  #So you can pull in technology attributes and reject if no technologies
+  accepts_nested_attributes_for :technologies, 
+                                reject_if: lambda { |attrs| attrs['name'].blank? }
+
   include Placeholder
 
   extend FriendlyId
