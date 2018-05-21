@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   #except expects an array
   resources :portfolios, except: [:show] 
   get 'portfolio/:id', to: 'portfolios#show', as: 'portfolio-singular'
+  get 'portfolios/angular-items', to: 'portfolios#angular'
 
   #get 'pages/about' | Below is how you map without pages/about
   get 'about-me', to: 'pages#about' #controller on the left side, action on the right side of hash

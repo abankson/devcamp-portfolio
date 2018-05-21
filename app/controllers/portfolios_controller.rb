@@ -7,6 +7,10 @@ class PortfoliosController < ApplicationController
     #In order to make use of @portfolio_items a file in views must be made for portfolios index 'index.html.erb'
   end
 
+  def angular
+    @portfolioItemsAngular = Portfolio.angular
+  end
+
 
   def new
     @portfolioItem = Portfolio.new 
