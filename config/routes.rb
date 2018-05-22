@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   #To do custom routes on resourced routes, use except then configure under
   #except expects an array
   resources :portfolios, except: [:show] 
