@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   #To do custom routes on resourced routes, use except then configure under
   #except expects an array
   resources :portfolios, except: [:show] 
